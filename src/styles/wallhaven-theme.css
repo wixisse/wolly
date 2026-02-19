@@ -1,0 +1,85 @@
+/* =============================================
+   Wallhaven App Theme — CSS Custom Properties
+   Light mode = default; Dark mode via .dark class
+   ============================================= */
+
+:root {
+  --wh-bg:          #f3f4f8;
+  --wh-surface-1:   #ffffff;
+  --wh-surface-2:   #eeeef5;
+  --wh-surface-3:   #e5e6ef;
+
+  --wh-border:        rgba(0, 0, 0, 0.08);
+  --wh-border-strong: rgba(0, 0, 0, 0.13);
+
+  --wh-text-1:  #0f0f14;
+  --wh-text-2:  #46465a;
+  --wh-text-3:  #7a7a92;
+  --wh-text-4:  #a8a8be;
+
+  --wh-overlay-xs: rgba(0, 0, 0, 0.03);
+  --wh-overlay-sm: rgba(0, 0, 0, 0.055);
+  --wh-overlay-md: rgba(0, 0, 0, 0.09);
+  --wh-overlay-lg: rgba(0, 0, 0, 0.13);
+
+  --wh-hover-sm: rgba(0, 0, 0, 0.04);
+  --wh-hover-md: rgba(0, 0, 0, 0.07);
+
+  --wh-dropdown-bg: #ffffff;
+  --wh-input-bg:    rgba(0, 0, 0, 0.04);
+  --wh-skeleton:    rgba(0, 0, 0, 0.07);
+}
+
+.dark {
+  --wh-bg:          #09090b;
+  --wh-surface-1:   #0e0e12;
+  --wh-surface-2:   #1a1a22;
+  --wh-surface-3:   #13131a;
+
+  --wh-border:        rgba(255, 255, 255, 0.06);
+  --wh-border-strong: rgba(255, 255, 255, 0.10);
+
+  --wh-text-1:  rgba(255, 255, 255, 0.93);
+  --wh-text-2:  rgba(255, 255, 255, 0.60);
+  --wh-text-3:  rgba(255, 255, 255, 0.40);
+  --wh-text-4:  rgba(255, 255, 255, 0.25);
+
+  --wh-overlay-xs: rgba(255, 255, 255, 0.03);
+  --wh-overlay-sm: rgba(255, 255, 255, 0.055);
+  --wh-overlay-md: rgba(255, 255, 255, 0.085);
+  --wh-overlay-lg: rgba(255, 255, 255, 0.12);
+
+  --wh-hover-sm: rgba(255, 255, 255, 0.04);
+  --wh-hover-md: rgba(255, 255, 255, 0.07);
+
+  --wh-dropdown-bg: #1a1a22;
+  --wh-input-bg:    rgba(255, 255, 255, 0.06);
+  --wh-skeleton:    rgba(255, 255, 255, 0.05);
+}
+
+/* ── Input & select placeholder colors ────────────────────────────────────── */
+input::placeholder {
+  color: var(--wh-text-4);
+  opacity: 1;
+}
+
+select {
+  color: var(--wh-text-1);
+  cursor: pointer;
+}
+
+/* ── Scrollbar styling ────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--wh-overlay-lg);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--wh-border-strong);
+}

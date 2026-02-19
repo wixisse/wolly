@@ -1,0 +1,57 @@
+{
+  "appId": "app.wolly.desktop",
+  "productName": "Wolly",
+  "copyright": "Copyright © 2025 Wolly Desktop",
+
+  // Files to include in the package
+  "files": [
+    "dist/**/*",
+    "dist-electron/**/*",
+    "public/**/*"
+  ],
+
+  "directories": {
+    "buildResources": "public",
+    "output": "release"
+  },
+
+  // ── Linux ──────────────────────────────────────────────────────────────────
+  "linux": {
+    "target": [
+      { "target": "AppImage", "arch": ["x64"] }
+    ],
+    "category":     "Utility",
+    "icon":         "public/icon.png",
+    "artifactName": "${productName}-${version}-linux-${arch}.${ext}",
+    // Pass Wayland flags as default command-line args
+    "executableArgs": [
+      "--ozone-platform-hint=auto",
+      "--enable-features=WaylandWindowDecorations"
+    ]
+  },
+
+  // ── macOS ──────────────────────────────────────────────────────────────────
+  "mac": {
+    "target":       [{ "target": "dmg" }, { "target": "zip" }],
+    "category":     "public.app-category.utilities",
+    "icon":         "public/icon.icns",
+    "hardenedRuntime": true,
+    "artifactName": "${productName}-${version}-mac-${arch}.${ext}"
+  },
+
+  // ── Windows ────────────────────────────────────────────────────────────────
+  "win": {
+    "target":       [{ "target": "nsis" }, { "target": "portable" }],
+    "icon":         "public/icon.ico",
+    "artifactName": "${productName}-${version}-win-${arch}.${ext}"
+  },
+  "nsis": {
+    "oneClick":            false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  },
+
+  // ── Auto-update (optional — needs a publish target) ────────────────────────
+  "publish": null
+}
