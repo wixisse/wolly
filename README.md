@@ -1,11 +1,24 @@
+# Wolly - Desktop Wallpaper App
 
-  # Desktop Wallpaper App
+A beautiful desktop wallpaper application for Linux with a modern UI, wallpapers from Wallhaven, and smooth animations.
 
-  This is a code bundle for Desktop Wallpaper App. The original project is available at https://www.figma.com/design/JlCBATuh79ag39D31qT347/Desktop-Wallpaper-App.
+## Download
 
-  ## Running the code
+Get the latest AppImage from [Releases](https://github.com/wixisse/wolly/releases)
 
-  Run `npm i` to install the dependencies.
+## Clone & Run
 
-  Run `npm run dev` to start the development server.
-  # wolly
+```bash
+git clone https://github.com/wixisse/wolly.git
+cd wolly
+npm install
+npm run dev
+```
+
+## Build AppImage
+
+```bash
+npm run electron:build:linux
+```
+
+The AppImage will be in the `release` folder.
