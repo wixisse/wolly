@@ -110,5 +110,10 @@
       "target": "AppImage",
       "category": "Utility"
     }
+  },
+  "publish": {
+    "provider": "github",
+    "owner": "wixisse",
+    "repo": "wolly"
   }
 }
