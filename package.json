@@ -102,5 +102,13 @@
       "vite": "6.3.5"
     }
   },
-  "main": "dist-electron/main.js"
+  "main": "dist-electron/main.js",
+  "build": {
+    "appId": "com.wolly.desktop",
+    "icon": "public/icon",
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility"
+    }
+  }
 }
