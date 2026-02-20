@@ -4,7 +4,9 @@ A beautiful desktop wallpaper application for Linux with a modern UI, wallpapers
 
 ## Download
 
-Get the latest AppImage from [Releases](https://github.com/wixisse/wolly/releases)
+Get the latest AppImage from [GitHub Releases](https://github.com/wixisse/wolly/releases).
+
+The AppImage is available in the Assets section of each release - simply download and make it executable:
 
 ## Clone & Run
 
