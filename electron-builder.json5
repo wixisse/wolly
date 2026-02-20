@@ -53,5 +53,9 @@
   },
 
   // ── Auto-update (optional — needs a publish target) ────────────────────────
-  "publish": null
+  "publish": {
+    "provider": "github",
+    "owner": "wixisse",
+    "repo": "wolly"
+  }
 }
