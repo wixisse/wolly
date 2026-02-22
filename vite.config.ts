@@ -72,7 +72,7 @@ export default defineConfig({
 
   // ── Build output ────────────────────────────────────────────────────────────
   build: {
-    outDir: "dist",
+    outDir: "renderer",
     emptyOutDir: true,
   },
 });

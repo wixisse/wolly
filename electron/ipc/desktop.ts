@@ -15,6 +15,12 @@ function desktopFile(): string { return path.join(xdgAppsDir(), "wolly.desktop")
 function scalableIcon():string { return path.join(xdgIconsDir(), "scalable", "apps", "wolly.svg"); }
 function png256Icon():  string { return path.join(xdgIconsDir(), "256x256",  "apps", "wolly.png"); }
 
+// ─── Get the actual executable path ───────────────────────────────────────────
+// For AppImage, process.execPath returns the AppImage path correctly
+function getExecPath(): string {
+  return process.execPath;
+}
+
 // ─── Status ──────────────────────────────────────────────────────────────────
 
 export interface DesktopStatus {
@@ -31,7 +37,7 @@ function getStatus(): DesktopStatus {
     installed:   fs.existsSync(desktopFile()),
     desktopPath: desktopFile(),
     iconPath:    scalableIcon(),
-    execPath:    app.getPath("exe"),
+    execPath:    getExecPath(),
     isDev,
   };
 }
@@ -207,7 +213,7 @@ async function install(): Promise<{ success: boolean; error?: string; desktopPat
 
     // 4. Write .desktop file (using scalable SVG path as Icon value)
     const isDev    = !app.isPackaged;
-    const execPath = app.getPath("exe");
+    const execPath = getExecPath();
     const content  = buildDesktopFile(execPath, ip, isDev);
     fs.writeFileSync(dp, content, "utf8");
     fs.chmodSync(dp, 0o644);

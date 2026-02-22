@@ -16,9 +16,25 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
 // ─── Paths ───────────────────────────────────────────────────────────────────
-const DIST    = path.join(__dirname, "../dist");
 const DEV_URL = process.env["VITE_DEV_SERVER_URL"];
 const isDev   = !!DEV_URL;
+
+// In dev, use normal path. In packaged app, we'll resolve DIST lazily
+function getDistPath(): string {
+  if (isDev) {
+    return path.join(__dirname, "../dist");
+  }
+  // Use app.getAppPath() which correctly resolves to the extracted asar location
+  // Renderer files are in the "renderer" subfolder
+  return path.join(app.getAppPath(), "renderer");
+}
+
+function getResourcePath(relativePath: string): string {
+  if (isDev) {
+    return path.join(__dirname, "..", relativePath);
+  }
+  return path.join(app.getAppPath(), relativePath);
+}
 
 // ─── Read persisted app settings (sync — must be before GPU process start) ───
 //
@@ -94,7 +110,7 @@ function createWindow() {
     show: false,
 
     webPreferences: {
-      preload:          path.join(__dirname, "preload.js"),
+      preload:          path.join(app.getAppPath(), "dist-electron", "preload.js"),
       contextIsolation: true,
       nodeIntegration:  false,
       sandbox:          false,
@@ -104,7 +120,7 @@ function createWindow() {
       additionalArguments: [`--wolly-deco=${windowDeco}`],
     },
 
-    icon: path.join(__dirname, "../public/icon.png"),
+    icon: getResourcePath("public/icon.png"),
   });
 
   // ── Load renderer ──────────────────────────────────────────────────────────
@@ -114,7 +130,7 @@ function createWindow() {
       mainWindow.webContents.openDevTools({ mode: "detach" });
     }
   } else {
-    mainWindow.loadFile(path.join(DIST, "index.html"));
+    mainWindow.loadFile(path.join(getDistPath(), "index.html"));
   }
 
   // ── Show window once fully painted ────────────────────────────────────────
