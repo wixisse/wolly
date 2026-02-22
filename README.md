@@ -6,7 +6,11 @@ A beautiful desktop wallpaper application for Linux with a modern UI, wallpapers
 
 Get the latest AppImage from [GitHub Releases](https://github.com/wixisse/wolly/releases).
 
-The AppImage is available in the Assets section of each release - simply download and make it executable:
+Download `Wolly-0.0.1.AppImage`, make it executable, and run:
+```bash
+chmod +x Wolly-0.0.1.AppImage
+./Wolly-0.0.1.AppImage
+```
 
 ## Clone & Run
 
@@ -23,4 +27,4 @@ npm run dev
 npm run electron:build:linux
 ```
 
-The AppImage will be in the `release` folder.
+The AppImage will be in the `dist` folder.
